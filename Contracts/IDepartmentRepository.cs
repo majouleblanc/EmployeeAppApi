@@ -9,10 +9,17 @@ namespace EmployeeAppApi.Contracts
     public interface IDepartmentRepository : IRepositoryBase<Department>
     {
         Task<IEnumerable<Department>> GetAllDepartmentsAsync();
-        Task<Department> GetDepartmentByIdAsync(string departmentId);
+
+        Task<IEnumerable<Department>> GetAllDepartmentsWithEmployeesAsync();
+
+        Task<Department> GetDepartmentWithEmployeesByIdAsync(string departmentId);
+        
         Task<Department> GetDepartmentWithEmployeesAsync(string departmentId);
-        Task<Department> CreateDepartmentAsync(Department department);
+
+        Department CreateDepartment(Department department);
+
         Department UpdateDepartment(Department department);
+
         Department DeleteDepartment(Department department);
     }
 }

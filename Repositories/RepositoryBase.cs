@@ -18,9 +18,9 @@ namespace EmployeeAppApi.Repositories
             _Context = context;
         }
 
-        public async Task CreateAsync(T entity)
+        public void Create(T entity)
         {
-            await _Context.Set<T>().AddAsync(entity);
+            _Context.Set<T>().Add(entity);
         }
 
         public void Delete(T entity)

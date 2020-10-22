@@ -24,13 +24,14 @@ namespace EmployeeAppApi.Repositories
             {
                 if (_DepartmentRepository == null)
                 {
-                    return new DepartmentRepository(_Context);
+                    _DepartmentRepository =  new DepartmentRepository(_Context);
                 }
-                return DepartmentRepository;
+                return _DepartmentRepository;
             }
+
         }
 
-        public async Task SaveChanges()
+        public async Task SaveChangesAsync()
         {
             await _Context.SaveChangesAsync();
         }

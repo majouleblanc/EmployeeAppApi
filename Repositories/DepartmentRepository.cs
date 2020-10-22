@@ -16,11 +16,12 @@ namespace EmployeeAppApi.Repositories
 
         }
 
-        public async Task<Department> CreateDepartmentAsync(Department department)
+        public Department CreateDepartment(Department department)
         {
-            await CreateAsync(department);
+            Create(department);
             return department;
         }
+
 
         public Department DeleteDepartment(Department department)
         {
@@ -33,7 +34,12 @@ namespace EmployeeAppApi.Repositories
             return await GetAll().ToListAsync();
         }
 
-        public async Task<Department> GetDepartmentByIdAsync(string departmentId)
+        public async Task<IEnumerable<Department>> GetAllDepartmentsWithEmployeesAsync()
+        {
+            return await GetAll().Include(dep => dep.Employees).ToListAsync();
+        }
+
+        public async Task<Department> GetDepartmentWithEmployeesByIdAsync(string departmentId)
         {
             return await GetByCondition(dep => dep.Id.Equals(departmentId)).FirstOrDefaultAsync();            
         }
