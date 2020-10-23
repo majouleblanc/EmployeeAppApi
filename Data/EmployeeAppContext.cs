@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeAppApi.Data
 {
-    public class NgAppContext : DbContext
+    public class EmployeeAppContext : DbContext
     {
-        public NgAppContext(DbContextOptions<NgAppContext> options) : base(options)
+        public EmployeeAppContext(DbContextOptions<EmployeeAppContext> options) : base(options)
         {
         }
 

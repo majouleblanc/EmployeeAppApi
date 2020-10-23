@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeAppApi.Migrations
 {
-    [DbContext(typeof(NgAppContext))]
+    [DbContext(typeof(EmployeeAppContext))]
     partial class NgAppContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

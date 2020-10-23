@@ -13,8 +13,8 @@ namespace EmployeeAppApi.Contracts
         Task<IEnumerable<Department>> GetAllDepartmentsWithEmployeesAsync();
 
         Task<Department> GetDepartmentWithEmployeesByIdAsync(string departmentId);
-        
-        Task<Department> GetDepartmentWithEmployeesAsync(string departmentId);
+
+        //Task<Department> GetDepartmentWithEmployeesAsync(string departmentId);
 
         Department CreateDepartment(Department department);
 

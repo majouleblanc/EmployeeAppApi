@@ -8,6 +8,7 @@ namespace EmployeeAppApi.Contracts
     public interface IUnitOfWork
     {
         IDepartmentRepository DepartmentRepository { get; }
+        IEmployeeRepository EmployeeRepository { get; }
         Task SaveChangesAsync();
     }
 }

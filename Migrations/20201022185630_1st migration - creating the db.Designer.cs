@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeAppApi.Migrations
 {
-    [DbContext(typeof(NgAppContext))]
+    [DbContext(typeof(EmployeeAppContext))]
     [Migration("20201022185630_1st migration - creating the db")]
     partial class _1stmigrationcreatingthedb
     {

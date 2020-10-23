@@ -30,7 +30,7 @@ namespace EmployeeAppApi.Extentions
         {
             //config.GetConnectionString("connectionStrings:sqlServerConnectionString");
             string connectionString =  config["connectionStrings:sqlServerConnectionString"];
-            services.AddDbContextPool<NgAppContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContextPool<EmployeeAppContext>(options => options.UseSqlServer(connectionString));
         }
 
         public static void ConfigureUnitOfWork(this IServiceCollection services)

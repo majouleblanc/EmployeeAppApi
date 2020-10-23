@@ -11,9 +11,9 @@ namespace EmployeeAppApi.Repositories
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        private readonly NgAppContext _Context;
+        private readonly EmployeeAppContext _Context;
 
-        public RepositoryBase(NgAppContext context)
+        public RepositoryBase(EmployeeAppContext context)
         {
             _Context = context;
         }

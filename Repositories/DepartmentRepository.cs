@@ -11,7 +11,7 @@ namespace EmployeeAppApi.Repositories
 {
     public class DepartmentRepository : RepositoryBase<Department>, IDepartmentRepository
     {
-        public DepartmentRepository(NgAppContext context): base(context)
+        public DepartmentRepository(EmployeeAppContext context): base(context)
         {
 
         }
@@ -42,11 +42,6 @@ namespace EmployeeAppApi.Repositories
         public async Task<Department> GetDepartmentWithEmployeesByIdAsync(string departmentId)
         {
             return await GetByCondition(dep => dep.Id.Equals(departmentId)).FirstOrDefaultAsync();            
-        }
-
-        public async Task<Department> GetDepartmentWithEmployeesAsync(string departmentId)
-        {
-            return await GetByCondition(dep => dep.Id.Equals(departmentId)).Include(dep=>dep.Employees).FirstOrDefaultAsync();
         }
 
         public Department UpdateDepartment(Department department)

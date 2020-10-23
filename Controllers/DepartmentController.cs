@@ -76,7 +76,7 @@ namespace EmployeeAppApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var department = await _UnitOfWork.DepartmentRepository.GetDepartmentWithEmployeesAsync(id);
+            var department = await _UnitOfWork.DepartmentRepository.GetDepartmentWithEmployeesByIdAsync(id);
             if (department == null)
             {
                 return BadRequest($"Department with Id : {id} doesn't exist!");

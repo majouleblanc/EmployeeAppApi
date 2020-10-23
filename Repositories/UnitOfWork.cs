@@ -9,14 +9,16 @@ namespace EmployeeAppApi.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly NgAppContext _Context;
+        private IDepartmentRepository _DepartmentRepository;
+        private IEmployeeRepository _EmployeeRepository;
 
-        public UnitOfWork(NgAppContext context)
+
+        private readonly EmployeeAppContext _Context;
+        public UnitOfWork(EmployeeAppContext context)
         {
             _Context = context;
         }
 
-        private IDepartmentRepository _DepartmentRepository;
 
         public IDepartmentRepository DepartmentRepository
         {
@@ -29,6 +31,16 @@ namespace EmployeeAppApi.Repositories
                 return _DepartmentRepository;
             }
 
+        }
+
+        public IEmployeeRepository EmployeeRepository { 
+            get {
+                if (_EmployeeRepository == null)
+                {
+                    _EmployeeRepository = new EmployeeRepository(_Context);
+                }
+                return _EmployeeRepository;
+            } 
         }
 
         public async Task SaveChangesAsync()
