@@ -11,14 +11,19 @@ namespace EmployeeAppApi.Extentions
     {
         public static void ConfigureModels(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Employee>().Property(emp => emp.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Employee>().HasOne(emp => emp.Department).WithMany(dep => dep.Employees).HasForeignKey(emp => emp.DepartmentId).OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<Department>().Property(dep => dep.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Department>().HasMany(dep => dep.Employees).WithOne(emp => emp.Department).OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.ConfigureEntities();
+
+            modelBuilder.SeedEntities();
         }
 
 
         
-        private static void ConfigureEntities(this ModelBuilder modelBuilder)
+        private static void SeedEntities(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Department>().HasData(
                 new Department { Id = "66774006-2371-4d5b-8518-2177bcf3f73e", Name = "HR" },

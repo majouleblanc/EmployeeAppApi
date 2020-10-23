@@ -4,14 +4,16 @@ using EmployeeAppApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeAppApi.Migrations
 {
     [DbContext(typeof(EmployeeAppContext))]
-    partial class NgAppContextModelSnapshot : ModelSnapshot
+    [Migration("20201023141754_configure the automatic generation of the Guid Id of entities")]
+    partial class configuretheautomaticgenerationoftheGuidIdofentities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

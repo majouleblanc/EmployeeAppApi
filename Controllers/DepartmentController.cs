@@ -49,6 +49,14 @@ namespace EmployeeAppApi.Controllers
         public async Task<IActionResult> Post([FromForm] Department department)
         {
             _UnitOfWork.DepartmentRepository.CreateDepartment(department);
+            if (department.Employees!=null)
+            {
+                foreach (var emp in department.Employees)
+                {
+                    emp.DepartmentId = department.Id;
+                    _UnitOfWork.EmployeeRepository.UpdateEmployee(emp);
+                }
+            }
             await _UnitOfWork.SaveChangesAsync();
             return Ok(department);
         }
