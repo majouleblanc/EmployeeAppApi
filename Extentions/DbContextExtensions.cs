@@ -12,6 +12,7 @@ namespace EmployeeAppApi.Extentions
         public static void ConfigureModels(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().HasOne(emp => emp.Department).WithMany(dep => dep.Employees).HasForeignKey(emp => emp.DepartmentId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Department>().HasMany(dep => dep.Employees).WithOne(emp => emp.Department).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.ConfigureEntities();
         }
 
