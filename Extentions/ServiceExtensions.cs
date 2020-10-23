@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace EmployeeAppApi.Extentions
 {
@@ -37,5 +38,13 @@ namespace EmployeeAppApi.Extentions
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+            }
     }
 }

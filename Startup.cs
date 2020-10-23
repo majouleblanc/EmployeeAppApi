@@ -35,6 +35,8 @@ namespace EmployeeAppApi
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
+
+            services.ConfigureSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,15 @@ namespace EmployeeAppApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseRouting();
 
