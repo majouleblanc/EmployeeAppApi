@@ -1,5 +1,6 @@
 # EmployeeAppApi
 Api Project to manage employees : Backend
+Project I use to learn modern frontend frameworks
 
 <h1>Technologies used :</h1>
 
