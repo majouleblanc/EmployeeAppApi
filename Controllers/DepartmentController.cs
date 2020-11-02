@@ -46,8 +46,15 @@ namespace EmployeeAppApi.Controllers
 
         // POST api/Department
         [HttpPost]
+        //public async Task<IActionResult> Post([FromForm] Department department)
         public async Task<IActionResult> Post([FromForm] Department department)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            department.Id = null;
             _UnitOfWork.DepartmentRepository.CreateDepartment(department);
             if (department.Employees!=null)
             {
@@ -92,7 +99,7 @@ namespace EmployeeAppApi.Controllers
             _UnitOfWork.DepartmentRepository.DeleteDepartment(department);
             await _UnitOfWork.SaveChangesAsync();
 
-            return Ok($"Department with Id : {id} was successfully deleted!");
+            return Ok(department);
         }
     }
 }

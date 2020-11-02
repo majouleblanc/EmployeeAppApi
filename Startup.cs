@@ -46,10 +46,12 @@ namespace EmployeeAppApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
-            app.UseCors();
+
+            app.UseCors("corsPolicy");
 
             app.UseSwagger();
 

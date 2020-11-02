@@ -18,13 +18,13 @@ namespace EmployeeAppApi.Repositories
 
         public Employee CreateEmployee(Employee employee)
         {
-            CreateEmployee(employee);
+            Create(employee);
             return employee;
         }
 
         public Employee DeleteEmployee(Employee employee)
         {
-            DeleteEmployee(employee);
+            Delete(employee);
             return employee;
         }
 
@@ -35,17 +35,18 @@ namespace EmployeeAppApi.Repositories
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesWithDepartmentssAsync()
         {
-            return await GetAll().Include(emp=>emp.Department).OrderBy(emp => emp.Name).ToListAsync();
+            return await GetAll().Include(emp => emp.Department).OrderBy(emp => emp.Name).ToListAsync();
         }
 
         public async Task<Employee> GetEmployeeWithDepartmentsByIdAsync(string employeeId)
         {
-            return await  GetEmployeeWithDepartmentsByIdAsync(employeeId);
+            return await GetByCondition(emp=>emp.Id == employeeId).FirstOrDefaultAsync();
         }
 
         public Employee UpdateEmployee(Employee employee)
         {
-            return UpdateEmployee(employee);
+            Update(employee);
+            return employee;
         }
     }
 }
